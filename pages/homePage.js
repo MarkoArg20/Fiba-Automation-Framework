@@ -84,20 +84,20 @@ exports.NavigationMenuApi = class NavigationMenuApi {
         this.request = request
     }
 
-    async checkGamesApi() {
+    async checkGamesApiStatusCode() { //krstuvanje podobro (nomenclature)
        this.getGamesApi = await this.request.get(process.env.GETGAMES)
        expect(this.getGamesApi.status()).toBe(200)
         
     }
-    async checkNewsApi() {
+    async checkNewsApiStatusCode() {
         this.getNewsApi = await this.request.get(process.env.GETNEWS)
         expect(this.getNewsApi.status()).toBe(200)
     }
-    async checkRankingApi() {
+    async checkRankingApiStatusCode() {
         this.getEventsApi = await this.request.get(process.env.GETEVENTS)
         expect(this.getEventsApi.status()).toBe(200)
     }
-     async checkCalendarApi() {
+     async checkCalendarApiStatusCode() {
      this.getCalendarApi = await this.request.get(process.env.GETCALENDAR, {
             headers: {
         'ocp-apim-subscription-key' : '898cd5e7389140028ecb42943c47eb74'
@@ -106,7 +106,7 @@ exports.NavigationMenuApi = class NavigationMenuApi {
               expect(this.getCalendarApi.status()).toBe(200)
 
     }
-    async checkHomeApi() {
+    async checkHomeApiStatusCode() {
         this.getHomeApi = await this.request.get(process.env.BASEURL)
         expect(this.getHomeApi.status()).toBe(200)
     }
@@ -115,7 +115,7 @@ exports.NavigationMenuApi = class NavigationMenuApi {
     async logInApi(email, password) {
         
          this.logInApiEndpoint =  await this.request.post(process.env.POSTLOGIN, {
-            data: {
+            data: { //da se stavi u poseben fajl
                 "client_id": "0eXXq6dvMmGS7Itn2uyu",
                 "email": email,
                 "password": password,

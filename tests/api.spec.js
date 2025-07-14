@@ -9,17 +9,17 @@ const { generateCodeChallenge } = require('../pkceUtils');
 let navigationMenuApi
 
 test.beforeEach(async ({ page, request }) => {
-  navigationMenuApi = new NavigationMenuApi(request)
+  navigationMenuApi = new NavigationMenuApi(request) // da se proba da se napravi ednas samo da se instancira i da vazi za site (beforeall)
 })
 
 
 test('ODREDI IME POSLE', async ({ page, request }) => {
 
-  await navigationMenuApi.checkGamesApi()
-  await navigationMenuApi.checkNewsApi()
-  await navigationMenuApi.checkRankingApi()
-  await navigationMenuApi.checkCalendarApi()
-  await navigationMenuApi.checkHomeApi()
+  await navigationMenuApi.checkGamesApiStatusCode()
+  await navigationMenuApi.checkNewsApiStatusCode()
+  await navigationMenuApi.checkRankingApiStatusCode()
+  await navigationMenuApi.checkCalendarApiStatusCode()
+  await navigationMenuApi.checkHomeApiStatusCode()
 })
 
 test('login with wrong password', async ({ page, request }) => {
@@ -51,7 +51,7 @@ test('Succesfull login', async ({ page, request }) => {
 
 
 
-test('login', async ({ page, request }) => {
+test.only('login', async ({ page, request }) => {
 
   const povik = await request.post('https://auth.fiba.basketball/identity/v1/password/login', {
     data: {
