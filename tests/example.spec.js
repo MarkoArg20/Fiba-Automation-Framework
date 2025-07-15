@@ -8,6 +8,7 @@ let navigationMenu
 test.beforeEach(async ({ page }) => {
   await page.goto('https://www.fiba.basketball/en') //zasto ne moze ovde process.env.BASEYRL
   await page.getByRole('button', { name: "I accept" }).click() //ova vo pom isto
+  await page.keyboard.press("Escape")
   navigationMenu = new NavigationMenu(page)
 })
 
@@ -22,24 +23,22 @@ test('Check button functionality', async ({ page }) => {
 
 });
 
-test.only('Succesful login', async ({ page }) => {
+test('Succesful login', async ({ page }) => {
 
-  await page.keyboard.press('Escape');
-  await navigationMenu.logIn(process.env.USERNAME1, process.env.PASSWORD)
+ 
+  await navigationMenu.logIn(process.env.FIBA_USERNAME, process.env.PASSWORD)
   await navigationMenu.assertSuccessfulLogin()
 })
 
 test('Unsuccesfull login - invalid password', async ({ page }) => {
 
-  await page.keyboard.press('Escape');
-  await navigationMenu.logIn(process.env.USERNAME1, '123'/* wrong password */)
+  await navigationMenu.logIn(process.env.FIBA_USERNAME, '123'/* wrong password */)
   await expect(page.getByText('Invalid or expired credentials. Please double-check or use the "Forgot password?" link to reset your password.')).toBeVisible() // i ova vo funkcija
 
 })
 
 test('Unsuccesfull login - invalid username', async ({ page }) => {
 
-  await page.keyboard.press('Escape');
   await navigationMenu.logIn('test@yahoo.com' /* wrong username */, process.env.PASSWORD)
   await expect(page.getByText('Invalid or expired credentials. Please double-check or use the "Forgot password?" link to reset your password.')).toBeVisible() // i ova vo funkcija
 

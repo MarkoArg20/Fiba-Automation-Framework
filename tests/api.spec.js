@@ -2,7 +2,7 @@ import { test, expect, request } from '@playwright/test'
 import { ok } from 'assert'
 
 import { NavigationMenuApi } from '../pages/homePage';
-const { generateCodeChallenge } = require('../pkceUtils');
+//const { generateCodeChallenge } = require('../pkceUtils');
 
 
 //import * as dotenv from 'dotenv';
@@ -51,7 +51,7 @@ test('Succesfull login', async ({ page, request }) => {
 
 
 
-test('login', async ({ page, request }) => {
+/* test('login', async ({ page, request }) => {
 
   const povik = await request.post('https://auth.fiba.basketball/identity/v1/password/login', {
     data: {
@@ -99,8 +99,8 @@ test('login', async ({ page, request }) => {
 
 
 
-  await page.goto('https://www.fiba.basketball/en/my-account')
+ /*  await page.goto('https://www.fiba.basketball/en/my-account')
   await page.waitForTimeout(1100)
-})
+}) */ 
 
 

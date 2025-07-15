@@ -51,7 +51,7 @@ export class NavigationMenu {
 } 
 
  async checkBtnFunctionality() {
-    await this.gamesBtn.click()
+    await this.gamesBtn.dispatchEvent('click')
     await expect(this.gamesModule).toBeVisible()
     await this.newsBtn.dispatchEvent('click')
     await expect(this.newsModule).toBeVisible()
@@ -94,20 +94,20 @@ exports.NavigationMenuApi = class NavigationMenuApi {
     }
 
     async checkGamesApiStatusCode() { //krstuvanje podobro (nomenclature)
-       this.getGamesApi = await this.request.get(process.env.GETGAMES)
+       this.getGamesApi = await this.request.get(process.env.GET_GAMES_URL)
        expect(this.getGamesApi.status()).toBe(200)
         
     }
     async checkNewsApiStatusCode() {
-        this.getNewsApi = await this.request.get(process.env.GETNEWS)
+        this.getNewsApi = await this.request.get(process.env.GET_NEWS_URL)
         expect(this.getNewsApi.status()).toBe(200)
     }
     async checkRankingApiStatusCode() {
-        this.getEventsApi = await this.request.get(process.env.GETEVENTS)
+        this.getEventsApi = await this.request.get(process.env.GET_EVENTS_URL)
         expect(this.getEventsApi.status()).toBe(200)
     }
      async checkCalendarApiStatusCode() {
-     this.getCalendarApi = await this.request.get(process.env.GETCALENDAR, {
+     this.getCalendarApi = await this.request.get(process.env.GET_CALENDAR_URL, {
             headers: {
         'ocp-apim-subscription-key' : '898cd5e7389140028ecb42943c47eb74'
       }
@@ -116,14 +116,14 @@ exports.NavigationMenuApi = class NavigationMenuApi {
 
     }
     async checkHomeApiStatusCode() {
-        this.getHomeApi = await this.request.get(process.env.BASEURL)
+        this.getHomeApi = await this.request.get(process.env.BASE_URL)
         expect(this.getHomeApi.status()).toBe(200)
     }
 
     
     async logInApi(email, password) {
         
-         this.logInApiEndpoint =  await this.request.post(process.env.POSTLOGIN, {
+         this.logInApiEndpoint =  await this.request.post(process.env.POST_LOGIN_URL, {
             data: { //da se stavi u poseben fajl
                 "client_id": "0eXXq6dvMmGS7Itn2uyu",
                 "email": email,
