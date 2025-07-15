@@ -9,7 +9,7 @@ const { generateCodeChallenge } = require('../pkceUtils');
 let navigationMenuApi
 
 test.beforeEach(async ({ page, request }) => {
-  navigationMenuApi = new NavigationMenuApi(request) // da se proba da se napravi ednas samo da se instancira i da vazi za site (beforeall)
+  navigationMenuApi = new NavigationMenuApi(request) // creating an instance of the class
 })
 
 
@@ -51,7 +51,7 @@ test('Succesfull login', async ({ page, request }) => {
 
 
 
-test.only('login', async ({ page, request }) => {
+test('login', async ({ page, request }) => {
 
   const povik = await request.post('https://auth.fiba.basketball/identity/v1/password/login', {
     data: {

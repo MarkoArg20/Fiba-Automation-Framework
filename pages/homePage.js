@@ -30,6 +30,9 @@ export class NavigationMenu {
         this.username = page.locator("input#fiba-email")
         this.password = page.locator("input#fiba-password")
         this.connectBtn = page.getByRole('button', {name: "Connect"})
+        this.goToMyAccountBtn = page.locator('a[class="_1xrgtvf2 _1xrgtvf0"]')
+        this.myAccountHeading = page.getByText("My account")
+        this.succesfulLogInMsg = page.locator('div._1qs1wm7b')
         
     }
 
@@ -76,6 +79,12 @@ async logIn(username, password) {
     await this.connectBtn.click()
 }
 
+ async assertSuccessfulLogin() {
+     await expect(this.succesfulLogInMsg).toBeVisible()
+    await this.goToMyAccountBtn.click()
+    await expect(this.myAccountHeading).toBeVisible()
+   
+    }
 }
 
 

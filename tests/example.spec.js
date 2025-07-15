@@ -1,10 +1,12 @@
-// @ts-check //testttttttttttttttt
+// @ts-check //najnov push
 import { test, expect } from '@playwright/test';
 const { NavigationMenu } = require('../pages/homePage')
 let navigationMenu
 
+
+
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://www.fiba.basketball/en")
+  await page.goto('https://www.fiba.basketball/en') //zasto ne moze ovde process.env.BASEYRL
   await page.getByRole('button', { name: "I accept" }).click() //ova vo pom isto
   navigationMenu = new NavigationMenu(page)
 })
@@ -20,16 +22,14 @@ test('Check button functionality', async ({ page }) => {
 
 });
 
-test.only('Succesfull login', async ({ page }) => {
+test.only('Succesful login', async ({ page }) => {
 
   await page.keyboard.press('Escape');
   await navigationMenu.logIn(process.env.USERNAME1, process.env.PASSWORD)
-  await page.locator('a[class="_1xrgtvf2 _1xrgtvf0"]').click() //da se vidi ova sto e zasto a hardoced i da ne bide
-  await expect(page.getByText("My account")).toBeVisible() // i ova isto taka
-
+  await navigationMenu.assertSuccessfulLogin()
 })
 
-test.only('Unsuccesfull login - invalid password', async ({ page }) => {
+test('Unsuccesfull login - invalid password', async ({ page }) => {
 
   await page.keyboard.press('Escape');
   await navigationMenu.logIn(process.env.USERNAME1, '123'/* wrong password */)
@@ -37,7 +37,7 @@ test.only('Unsuccesfull login - invalid password', async ({ page }) => {
 
 })
 
-test.only('Unsuccesfull login - invalid username', async ({ page }) => {
+test('Unsuccesfull login - invalid username', async ({ page }) => {
 
   await page.keyboard.press('Escape');
   await navigationMenu.logIn('test@yahoo.com' /* wrong username */, process.env.PASSWORD)
