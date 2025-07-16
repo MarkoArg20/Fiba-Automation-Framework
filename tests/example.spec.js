@@ -1,4 +1,4 @@
-// @ts-check //najnov push
+// @ts-check //16.07 18:46
 import { test, expect } from '@playwright/test';
 const { NavigationMenu } = require('../pages/homePage')
 let navigationMenu
@@ -6,10 +6,9 @@ let navigationMenu
 
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://www.fiba.basketball/en') //zasto ne moze ovde process.env.BASEYRL
-  await page.getByRole('button', { name: "I accept" }).click() //ova vo pom isto
-  await page.keyboard.press("Escape")
   navigationMenu = new NavigationMenu(page)
+  await page.goto('https://www.fiba.basketball/en') //zasto ne moze ovde process.env.BASEYRL
+  await navigationMenu.preparePageOnLoad()
 })
 
 test('Check if navigation menu is available and all the buttons in it', async ({ page }) => {

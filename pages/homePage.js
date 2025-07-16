@@ -33,9 +33,16 @@ export class NavigationMenu {
         this.goToMyAccountBtn = page.locator('a[class="_1xrgtvf2 _1xrgtvf0"]')
         this.myAccountHeading = page.getByText("My account")
         this.succesfulLogInMsg = page.locator('div._1qs1wm7b')
+        this.acceptCookiesBtn = page.getByRole('button', { name: "I accept" })
+        this.closeCupsPopup = page.locator("button._9ja35n0>*")
         
     }
 
+    async preparePageOnLoad() {
+        await this.acceptCookiesBtn.click()
+        await this.closeCupsPopup.click()
+
+    }
     async assertNavigationMenu() {
         await expect(this.headerLogo).toBeVisible()
         await expect(this.homeBtn).toBeVisible()
