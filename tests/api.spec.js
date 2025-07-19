@@ -26,7 +26,7 @@ test('ODREDI IME POSLE', async ({ page, request }) => {
 
 test('login with wrong password', async ({ page, request }) => {
 
-  const logInApiEndpoint = await navigationMenuApi.logInApi('markoargirovski07@gmail.com', 'Kabel@11asdadasd')
+  const logInApiEndpoint = await navigationMenuApi.logInApi('markoargirovski07@gmail.com', 'markomarko123asdadasd')
 
   expect(logInApiEndpoint.status()).toBe(401)
 
@@ -36,7 +36,7 @@ test('login with wrong password', async ({ page, request }) => {
 test('login with wrong username', async ({ page, request }) => {
 
 
-  const logInApiEndpoint = await navigationMenuApi.logInApi('markoargirovski07@gmail.com', 'Kabel@11asdadasd')
+  const logInApiEndpoint = await navigationMenuApi.logInApi('markoargirovski07@gmail.com', 'markomarko123asdadasd')
 
   expect(logInApiEndpoint.status()).toBe(401)
 
