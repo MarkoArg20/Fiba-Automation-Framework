@@ -1,5 +1,7 @@
 import { test, expect, request } from '@playwright/test'
 import { ok } from 'assert'
+require('dotenv').config();
+
 
 import { NavigationMenuApi } from '../pages/homePage';
 //const { generateCodeChallenge } = require('../pkceUtils');
@@ -43,7 +45,7 @@ test('login with wrong username', async ({ page, request }) => {
 test('Succesfull login', async ({ page, request }) => {
 
 
-  const logInApiEndpoint = await navigationMenuApi.logInApi('markoargirovski07@gmail.com', 'Kabel@11')
+  const logInApiEndpoint = await navigationMenuApi.logInApi(process.env.FIBA_USERNAME, process.env.PASSWORD)
 
   expect(logInApiEndpoint.status()).toBe(200)
 

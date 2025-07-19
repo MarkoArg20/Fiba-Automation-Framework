@@ -23,8 +23,6 @@ test('Check button functionality', async ({ page }) => {
 });
 
 test('Succesful login', async ({ page }) => {
-
- 
   await navigationMenu.logIn(process.env.FIBA_USERNAME, process.env.PASSWORD)
   await navigationMenu.assertSuccessfulLogin()
 })
