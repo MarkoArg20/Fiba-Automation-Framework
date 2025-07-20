@@ -2,13 +2,13 @@
   "name": "fiba-at",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-        "test": "npx playwright test --reporter=junit:test-results/results.xml",
-  },
-  "keywords": [],
+  "description": "",
   "author": "",
   "license": "ISC",
-  "description": "",
+  "scripts": {
+    "test": "npx playwright test --reporter=junit:test-results/results.xml"
+  },
+  "keywords": [],
   "devDependencies": {
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.15.29"
