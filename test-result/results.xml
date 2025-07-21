@@ -1,0 +1,122 @@
+<testsuites id="" name="" tests="50" failures="0" skipped="0" errors="0" time="269.214623">
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="24.17" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.929">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="6.744">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.192">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="3.881">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="3.424">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="24.854" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.211">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="8.036">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="5.754">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="3.907">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="3.946">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="24.967" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.187">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="7.526">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.126">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="3.65">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="4.478">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="25.511" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.437">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="8.037">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.095">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="4.088">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="3.854">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="25.412" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.293">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="6.811">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.561">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="4.201">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="4.546">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="25.927" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.418">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="8.133">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.365">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="4.099">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="3.912">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="25.072" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.211">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="7.309">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.437">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="4.3">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="3.815">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="24.448" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.378">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="6.904">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.335">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="4.035">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="3.796">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="26.222" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.328">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="7.661">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.78">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="4.47">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="3.983">
+</testcase>
+</testsuite>
+<testsuite name="example.spec.js" timestamp="2025-07-21T18:30:16.375Z" hostname="chromium" tests="5" failures="0" skipped="0" time="24.887" errors="0">
+<testcase name="Check if navigation menu is available and all the buttons in it" classname="example.spec.js" time="3.255">
+</testcase>
+<testcase name="Check button functionality" classname="example.spec.js" time="7.097">
+</testcase>
+<testcase name="Succesful login" classname="example.spec.js" time="6.349">
+</testcase>
+<testcase name="Unsuccesfull login - invalid password" classname="example.spec.js" time="4.139">
+</testcase>
+<testcase name="Unsuccesfull login - invalid username" classname="example.spec.js" time="4.047">
+</testcase>
+</testsuite>
+</testsuites>
