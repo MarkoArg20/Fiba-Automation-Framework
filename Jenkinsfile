@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/MarkoArg20/FIBA-'
+                git branch: 'main', url: 'https://github.com/MarkoArg20/FIBA-.git'
             }
         }
 
