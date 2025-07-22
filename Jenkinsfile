@@ -29,10 +29,12 @@ pipeline {
             }
         }
 
-        stage('Archive Results') {
-            steps {
-                junit '**/playwright-report/*.xml' // optional, if using JUnit reports
-            }
-        }
+        /*
+stage('Archive Results') {
+    steps {
+        junit '**/playwright-report/*.xml' // optional, if using JUnit reports
+    }
+}
+*/
     }
 }
