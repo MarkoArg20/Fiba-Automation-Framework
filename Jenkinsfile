@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+     triggers {
+        cron('H/20 * * * *')
+    }
 
     tools {
         nodejs 'NodeJS_18' // Use the NodeJS name from your Jenkins config
