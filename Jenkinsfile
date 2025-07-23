@@ -16,6 +16,18 @@ pipeline {
             }
         }
 
+        // tuka novoto
+        stage('Create .env file') {
+            steps {
+                withCredentials([string(credentialsId: 'dot-env-content', variable: 'DOT_ENV')]) {
+                    sh '''
+                        echo "$DOT_ENV" > .env
+                    '''
+                }
+            }
+        }
+  // tuka novoto
+        
         stage('Install Dependencies') {
             steps {
                 sh 'npm ci'
@@ -24,7 +36,7 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright install' // just in case
+                sh 'npx playwright install' 
                 sh 'npx playwright test'
             }
         }
