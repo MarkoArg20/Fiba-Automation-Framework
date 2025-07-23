@@ -35,7 +35,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 sh 'npx playwright install' 
-                sh 'npx playwright test'
+                sh 'npx dotenv -e .env -- npx playwright test'
             }
         }
 
