@@ -20,9 +20,7 @@ pipeline {
         stage('Create .env file') {
             steps {
                 withCredentials([string(credentialsId: 'dot-env-content', variable: 'DOT_ENV')]) {
-                    sh '''
-                        echo "$DOT_ENV" > .env
-                    '''
+                    writeFile file: '.env', text: "${DOT_ENV}"
                 }
             }
         }
