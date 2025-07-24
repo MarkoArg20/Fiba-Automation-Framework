@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
-import dotenv from 'dotenv';
 require('dotenv').config();
+
 
 
 
