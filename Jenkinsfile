@@ -24,6 +24,13 @@ pipeline {
                 }
             }
         }
+//debug
+        stage('Debug .env') {
+    steps {
+        sh 'cat .env'
+    }
+        }
+    //debug
   // tuka novoto
         
         stage('Install Dependencies') {
@@ -35,7 +42,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 sh 'npx playwright install' 
-                sh 'npx dotenv -e .env -- npx playwright test'
+                sh 'npx playwright test'
             }
         }
 
