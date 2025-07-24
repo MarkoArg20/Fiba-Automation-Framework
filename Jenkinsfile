@@ -20,7 +20,10 @@ pipeline {
         stage('Create .env file') {
             steps {
                 withCredentials([string(credentialsId: 'dot-env-content', variable: 'DOT_ENV')]) {
-                    writeFile file: '.env', text: "${DOT_ENV}"
+                     script {
+                def fixedEnv = DOT_ENV.replaceAll('\\\\n', '\n')
+                writeFile file: '.env', text: fixedEnv
+            }
                 }
             }
         }
