@@ -38,7 +38,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 sh 'npx playwright install' 
-                sh 'npx playwright test'
+                sh 'npx playwright test --trace on --reporter=html'
             }
         }
 
