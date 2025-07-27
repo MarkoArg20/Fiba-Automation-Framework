@@ -50,7 +50,7 @@ pipeline {
         to: "markoargirovski07@gmail.com",
         from: "markoargirovski07@gmail.com",
           replyTo: "markoargirovski07@gmail.com",
-        attachmentsPattern: "screenshots/failed/*.png"
+        attachmentsPattern: "playwright-report/data/*.png"
       )
     }
   }
