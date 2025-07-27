@@ -43,7 +43,7 @@ pipeline {
         }
     }
      post {
-    failure {
+    success {
       emailext (
         subject: "Playwright Test Failed - Screenshot Attached",
         body: "Test failed. See attached screenshot.",
