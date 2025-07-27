@@ -15,7 +15,7 @@ test.beforeEach(async ({ page, request }) => {
 })
 
 
-test('ODREDI IME POSLE', async ({ page, request }) => {
+test.only('ODREDI IME POSLE', async ({ page, request }) => {
 
   await navigationMenuApi.checkGamesApiStatusCode()
   await navigationMenuApi.checkNewsApiStatusCode()
