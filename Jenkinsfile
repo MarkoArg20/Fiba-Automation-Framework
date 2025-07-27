@@ -48,8 +48,8 @@ pipeline {
         subject: "Playwright Test Failed - Screenshot Attached",
         body: "Test failed. See attached screenshot.",
         to: "markoargirovski07@gmail.com",
-        from: "markoargirovski07@gmail.com,
-          replyTo: "markoargirovski07@gmail.com
+        from: "markoargirovski07@gmail.com",
+          replyTo: "markoargirovski07@gmail.com",
         attachmentsPattern: "screenshots/failed/*.png"
       )
     }
