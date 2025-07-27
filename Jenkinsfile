@@ -45,9 +45,9 @@ pipeline {
      post {
     success {
       emailext (
-        subject: "Playwright Test Failed - Screenshot Attached",
+        subject: "Playwright Test Failed - Screenshot Attached - this is a test e-mail for PW project",
         body: "Test failed. See attached screenshot.",
-        to: "markoargirovski07@gmail.com",
+        to: "markoargirovski07@gmail.com", "argivan243@gmail.com",
         from: "markoargirovski07@gmail.com",
           replyTo: "markoargirovski07@gmail.com",
         attachmentsPattern: "playwright-report/data/*.png"
