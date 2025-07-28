@@ -56,9 +56,7 @@ pipeline {
             } else {
                 bat 'powershell Compress-Archive -Path playwright-report\\* -DestinationPath playwright-report.zip'
             }
-        }
-
-        emailext(
+            emailext(
             subject: "Playwright Test Report - HTML",
             body: "Below you can view the status of the runned test cases. Download and extract the attached ZIP file. Open 'index.html' in your browser to view the report.",
             to: "markoargirovski07@gmail.com, argivan243@gmail.com",
@@ -66,6 +64,7 @@ pipeline {
             replyTo: "markoargirovski07@gmail.com",
             attachmentsPattern: "playwright-report.zip"
         )
+        }
     }
 }
 }
