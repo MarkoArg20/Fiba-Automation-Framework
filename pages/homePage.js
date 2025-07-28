@@ -2,8 +2,6 @@ import { expect } from '@playwright/test';
 require('dotenv').config();
 
 
-
-
 export class NavigationMenu {
     constructor(page) {
         this.page = page
@@ -65,9 +63,9 @@ export class NavigationMenu {
     await expect(this.newsModule).toBeVisible()
     await this.rankingsBtn.click()
     await expect(this.rankingModule).toBeVisible()
-    await this.calendarBtn.dispatchEvent('click')   // ova ednas padnato!!!
+    await this.calendarBtn.dispatchEvent('click')  
     await expect(this.calendarModule).toBeVisible()
-    await this.moreBtn.dispatchEvent('click')   // ova ednas padnato!!!!
+    await this.moreBtn.dispatchEvent('click')   
     await expect(this.moreModule).toBeVisible()
     await this.searchBtn.click()
     await expect(this.searchBox).toBeVisible()
@@ -75,8 +73,8 @@ export class NavigationMenu {
     await expect(this.searchBox).toBeHidden()
     await this.logInBtn.click()
     await expect(this.loginForm).toBeVisible()
-    await this.backBtn.dispatchEvent('click')   // ova dva pati padnato!!!!
-    await this.chooseLanguageBtn.dispatchEvent('click')     // ova dva pati padnato!!!
+    await this.backBtn.dispatchEvent('click')   
+    await this.chooseLanguageBtn.dispatchEvent('click')    
     const optionsDropDown = this.chooseLanguageOptions
     await expect(optionsDropDown).toHaveText(['EN', 'FR', 'ES'])
  }
@@ -85,7 +83,7 @@ async logIn(username, password) {
     await this.logInBtn.click()
     await this.username.fill(username)
     await this.password.fill(password)
-    await this.connectBtn.dispatchEvent('click')  // padnato so visible enable and stable...
+    await this.connectBtn.dispatchEvent('click') 
 }
 
  async assertSuccessfulLogin() {
@@ -104,20 +102,20 @@ exports.NavigationMenuApi = class NavigationMenuApi {
         this.request = request
     }
 
-    async checkGamesApiStatusCode() { //krstuvanje podobro (nomenclature)
+    async assertGamesApiStatusCodeIs200() { 
        this.getGamesApi = await this.request.get(process.env.GET_GAMES_URL)
        expect(this.getGamesApi.status()).toBe(200)
         
     }
-    async checkNewsApiStatusCode() {
+    async assertNewsApiStatusCodeIs200() {
         this.getNewsApi = await this.request.get(process.env.GET_NEWS_URL)
         expect(this.getNewsApi.status()).toBe(200)
     }
-    async checkRankingApiStatusCode() {
+    async assertRankingStatusCodeIs200() {
         this.getEventsApi = await this.request.get(process.env.GET_EVENTS_URL)
         expect(this.getEventsApi.status()).toBe(200)
     }
-     async checkCalendarApiStatusCode() {
+     async assertCalendarStatusCodeIs200() {
      this.getCalendarApi = await this.request.get(process.env.GET_CALENDAR_URL, {
             headers: {
         'ocp-apim-subscription-key' : '898cd5e7389140028ecb42943c47eb74'
@@ -126,7 +124,7 @@ exports.NavigationMenuApi = class NavigationMenuApi {
               expect(this.getCalendarApi.status()).toBe(200)
 
     }
-    async checkHomeApiStatusCode() {
+    async assertHomeApiStatusCodeIs200() {
         this.getHomeApi = await this.request.get(process.env.BASE_URL)
         expect(this.getHomeApi.status()).toBe(200)
     }
@@ -135,8 +133,8 @@ exports.NavigationMenuApi = class NavigationMenuApi {
     async logInApi(email, password) {
         
          this.logInApiEndpoint =  await this.request.post(process.env.POST_LOGIN_URL, {
-            data: { //da se stavi u poseben fajl
-                "client_id": "0eXXq6dvMmGS7Itn2uyu",
+            data: {
+              "client_id": "0eXXq6dvMmGS7Itn2uyu",
                 "email": email,
                 "password": password,
                 "scope": "openid profile email phone address full_write"
