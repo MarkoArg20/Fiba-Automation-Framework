@@ -48,25 +48,21 @@ pipeline {
       attachmentsPattern: "playwright-report/data/*.png"
     )
     script {
-      if (isUnix()) {
-        sh 'zip -r playwright-report.zip playwright-report'
-      } else {
-        bat 'powershell Compress-Archive -Path playwright-report\\* -DestinationPath playwright-report.zip'
-      }
-    }
+  if (isUnix()) {
+    sh 'zip -r playwright-report.zip playwright-report/index.html playwright-report/data'
+  } else {
+    bat 'powershell Compress-Archive -Path playwright-report\\index.html,playwright-report\\data -DestinationPath playwright-report.zip'
+  }
+}
 
-      sh 'ls -lh playwright-report.zip || echo "ZIP file not found!"'
-
-
-      
-    emailext(
-      subject: "Playwright Test Report - HTML",
-      body: "Below you can view the status of the runned test cases. Download and extract the attached ZIP file. Open 'index.html' in your browser to view the report.",
-      to: "markoargirovski07@gmail.com",
-      from: "markoargirovski07@gmail.com",
-      replyTo: "markoargirovski07@gmail.com",
-      attachmentsPattern: "playwright-report.zip"
-    )
+emailext(
+  subject: "Playwright Test Report - HTML",
+  body: "Below you can view the status of the runned test cases. Download and extract the attached ZIP file. Open 'index.html' in your browser to view the report.",
+  to: "markoargirovski07@gmail.com",
+  from: "markoargirovski07@gmail.com",
+  replyTo: "markoargirovski07@gmail.com",
+  attachmentsPattern: "playwright-report.zip"
+)
   }
 }
 }
