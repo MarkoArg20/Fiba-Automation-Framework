@@ -54,6 +54,10 @@ pipeline {
         bat 'powershell Compress-Archive -Path playwright-report\\* -DestinationPath playwright-report.zip'
       }
     }
+
+      sleep(time: 10, unit: "SECONDS")
+
+      
     emailext(
       subject: "Playwright Test Report - HTML",
       body: "Below you can view the status of the runned test cases. Download and extract the attached ZIP file. Open 'index.html' in your browser to view the report.",
