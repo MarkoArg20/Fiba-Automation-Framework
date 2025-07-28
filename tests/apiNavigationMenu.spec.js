@@ -7,7 +7,9 @@ import { NavigationMenuApi } from '../pages/homePage';
 let navigationMenuApi
 
 test.beforeEach(async ({ page, request }) => {
+
   navigationMenuApi = new NavigationMenuApi(request) // creating an instance of the class
+
 })
 
 
@@ -18,6 +20,7 @@ test('ODREDI IME POSLE', async ({ page, request }) => {
   await navigationMenuApi.assertRankingStatusCodeIs200()
   await navigationMenuApi.assertCalendarStatusCodeIs200()
   await navigationMenuApi.assertHomeApiStatusCodeIs200()
+  
 })
 
 test('login with wrong password', async ({ page, request }) => {
