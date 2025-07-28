@@ -55,7 +55,8 @@ pipeline {
       }
     }
 
-      sleep(time: 10, unit: "SECONDS")
+      sh 'ls -lh playwright-report.zip || echo "ZIP file not found!"'
+
 
       
     emailext(
