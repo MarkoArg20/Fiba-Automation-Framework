@@ -55,6 +55,9 @@ pipeline {
   }
 }
 
+     sh 'ls -lh playwright-report.zip || echo "ZIP file not found!"'
+
+
 emailext(
   subject: "Playwright Test Report - HTML",
   body: "Below you can view the status of the runned test cases. Download and extract the attached ZIP file. Open 'index.html' in your browser to view the report.",
