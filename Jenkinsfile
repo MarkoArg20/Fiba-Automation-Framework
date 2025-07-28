@@ -42,7 +42,7 @@ pipeline {
     emailext(
       subject: "Playwright Test Passed - No Screenshots",
       body: "Test passed. No screenshots required.",
-      to: "markoargirovski07@gmail.com, argivan243@gmail.com",
+      to: "markoargirovski07@gmail.com",
       from: "markoargirovski07@gmail.com",
       replyTo: "markoargirovski07@gmail.com",
       attachmentsPattern: "playwright-report/data/*.png"
