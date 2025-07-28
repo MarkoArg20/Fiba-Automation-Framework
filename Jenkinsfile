@@ -53,5 +53,15 @@ pipeline {
         attachmentsPattern: "playwright-report/data/*.png"
       )
     }
+    always {
+        emailext (
+      subject: "Playwright Test Report - HTML",
+      body: "Below you can view the status of the runned test cases",
+      to: "markoargirovski07@gmail.com, argivan243@gmail.com",
+      from: "markoargirovski07@gmail.com",
+      replyTo: "markoargirovski07@gmail.com",
+      attachmentsPattern: "playwright-report/index.html"
+    )
+    }
   }
 }
