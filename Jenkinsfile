@@ -38,25 +38,26 @@ pipeline {
     }
 
    post {
-    success {
-        emailext(
-            subject: "Playwright Test Passed - No Screenshots",
-            body: "Test passed. No screenshots required.",
-            to: "markoargirovski07@gmail.com, argivan243@gmail.com",
-            from: "markoargirovski07@gmail.com",
-            replyTo: "markoargirovski07@gmail.com",
-            attachmentsPattern: "playwright-report/data/*.png"
-        )
-    }
+   // success {
+     //   emailext(
+       //     subject: "Playwright Test Passed - No Screenshots",
+         //   body: "Test passed. No screenshots required.",
+           // to: "markoargirovski07@gmail.com, argivan243@gmail.com",
+           // from: "markoargirovski07@gmail.com",
+            //replyTo: "markoargirovski07@gmail.com",
+           // attachmentsPattern: "playwright-report/data/*.png"
+       // )
+   // }
 
-    always {
+    success {
         script {
             if (isUnix()) {
                 sh 'zip -r playwright-report.zip playwright-report'
             } else {
                 bat 'powershell Compress-Archive -Path playwright-report\\* -DestinationPath playwright-report.zip'
             }
-            emailext(
+        }
+          emailext(
             subject: "Playwright Test Report - HTML",
             body: "Below you can view the status of the runned test cases. Download and extract the attached ZIP file. Open 'index.html' in your browser to view the report.",
             to: "markoargirovski07@gmail.com, argivan243@gmail.com",
@@ -64,7 +65,6 @@ pipeline {
             replyTo: "markoargirovski07@gmail.com",
             attachmentsPattern: "playwright-report.zip"
         )
-        }
     }
 }
 }
