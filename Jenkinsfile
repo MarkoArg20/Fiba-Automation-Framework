@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+    MEGA_USER = credentials('markoargirovski07@gmail.com')  // Your Jenkins MEGA username credential ID
+    MEGA_PASS = credentials('Baterija@11kabel@11')  // Your Jenkins MEGA password credential ID
+  }
 
     tools {
         nodejs 'NodeJS_18'
@@ -35,6 +39,57 @@ pipeline {
                 sh 'npx playwright test --trace on --reporter=html'
             }
         }
+        stage('Upload Report to MEGA and Email Link') {
+      steps {
+        script {
+          // Login to MEGA (make sure 'mega-cmd' is installed on agent)
+          sh """
+            mega-login ${env.MEGA_USER} ${env.MEGA_PASS}
+          """
+
+          // Upload the zipped report with unique path per build
+          sh """
+            mega-put playwright-report.zip /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/
+          """
+
+          // Get the publicly shareable public link for the file
+          def megaLink = sh(
+            script: "mega-export /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report.zip",
+            returnStdout: true
+          ).trim()
+
+          echo "MEGA report link is: ${megaLink}"
+
+          // Email the link to your recipients without any attachment
+          emailext(
+            subject: "Playwright Test Report Uploaded to MEGA - Build #${env.BUILD_NUMBER}",
+            body: """Hello,
+
+Your Playwright test report for build #${env.BUILD_NUMBER} has completed successfully and has been uploaded to MEGA.
+
+You can download and view the report here:
+${megaLink}
+
+Best regards,
+Jenkins CI Server
+""",
+            to: 'markoargirovski07@gmail.com',
+            from: 'jenkins@yourdomain.com',
+            replyTo: 'jenkins@yourdomain.com'
+          )
+        }
+      }
+    }
+  }
+
+  post {
+    always {
+      script {
+        // Optional: Log out from MEGA to clean session
+        sh 'mega-logout || true'
+      }
+    }
+  }
     }
 
  post {
