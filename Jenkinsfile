@@ -37,21 +37,21 @@ pipeline {
         }
     }
 
-  post {
+ post {
   success {
     // Send screenshots email on success (if any)
     emailext(
-      subject: "Playwright Test Passed - No Screenshots",
-      body: "Test passed. No screenshots required.",
+      subject: "Playwright Test Passed",
+      body: "Test passed. Here are some screenshots.",
       to: "markoargirovski07@gmail.com",
       from: "markoargirovski07@gmail.com",
       replyTo: "markoargirovski07@gmail.com",
       attachmentsPattern: "playwright-report/data/*.png"
     )
   }
-  
+
   always {
-    // Zip the report folder
+    // Zip the report folder for retention as a Jenkins artifact (but not emailing it!)
     script {
       if (isUnix()) {
         sh 'zip -r playwright-report.zip playwright-report/index.html playwright-report/data'
@@ -59,32 +59,28 @@ pipeline {
         bat 'powershell Compress-Archive -Path playwright-report\\index.html,playwright-report\\data -DestinationPath playwright-report.zip'
       }
     }
-    
-    // Optional: List zip file info in console to confirm
-    script {
-      if (isUnix()) {
-        sh 'ls -lh playwright-report.zip || echo "ZIP file not found!"'
-      } else {
-        bat 'dir playwright-report.zip || echo ZIP file not found!'
-      }
-    }
-    
-    // Archive the report so it's accessible as a Jenkins artifact
+
+    // Archive the report so it's accessible in Jenkins build's Artifacts section
     archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
-    
-    // Build URL link to the report index.html
+
+    // (Optional) Archive the ZIP file for easy download
+    archiveArtifacts artifacts: 'playwright-report.zip', fingerprint: true
+
+    // Build and email the Jenkins artifact link to the HTML report
     script {
       def reportUrl = "${env.BUILD_URL}artifact/playwright-report/index.html"
       emailext(
         subject: "Playwright Test Report - HTML",
         body: """The Playwright test report is available here:
+
 ${reportUrl}
 
-You can also download the attached ZIP file to view it locally.""",
+You can view the test report directly by clicking the link above.
+""",
         to: "markoargirovski07@gmail.com",
         from: "markoargirovski07@gmail.com",
-        replyTo: "markoargirovski07@gmail.com",
-        attachmentsPattern: "playwright-report.zip"
+        replyTo: "markoargirovski07@gmail.com"
+        // No attachmentsPattern here!
       )
     }
   }
