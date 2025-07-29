@@ -69,6 +69,7 @@ pipeline {
     // Build and email the Jenkins artifact link to the HTML report
     script {
       def reportUrl = "${env.BUILD_URL}artifact/playwright-report/index.html"
+        echo "MY_LOCATION_OF_BUILDURL is ${env.BUILD_URL}"
       emailext(
         subject: "Playwright Test Report - HTML",
         body: """The Playwright test report is available here:
