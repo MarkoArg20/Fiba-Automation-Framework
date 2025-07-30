@@ -43,20 +43,19 @@ pipeline {
             usernameVariable: 'MEGA_USER',
             passwordVariable: 'MEGA_PASS'
         )]) {
-            sh """
+            script {
+                def megaLink = sh (
+            script: """
                 mega-logout || true
                 mega-login "$MEGA_USER" "$MEGA_PASS"
                 mega-put -c playwright-report /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/
+                mega-export "/JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report"
             """
-
+                    returnStdout: true
+                    ).trim()
+                echo "MEGA report link is: ${megaLink}"
             // Get public link
             script {
-                def megaLink = sh(
-                    script: "mega-export /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report",
-                    returnStdout: true
-                ).trim()
-                echo "MEGA report link is: ${megaLink}"
-
                 emailext(
                     subject: "Playwright Test Report Uploaded to MEGA - Build #${env.BUILD_NUMBER}",
                     body: """Hello,
@@ -106,7 +105,7 @@ Jenkins CI Server
     archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
 
     // (Optional) Archive the ZIP file for easy download
-    archiveArtifacts artifacts: 'playwright-report.zip', fingerprint: true
+    archiveArtifacts artifacts: 'playwright-report', fingerprint: true
 
     // Build and email the Jenkins artifact link to the HTML report
     script {
