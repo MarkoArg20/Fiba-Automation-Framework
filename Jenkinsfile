@@ -1,8 +1,6 @@
 pipeline {
     agent any
     environment {
-    MEGA_USER = credentials('markoargirovski07@gmail.com')  // Your Jenkins MEGA username credential ID // ova bilo nekoe ID so credentials ( prasaj perplexity) trebalo u config da se dodadat
-    MEGA_PASS = credentials('Baterija@11kabel@11')  // Your Jenkins MEGA password credential ID
   }
 
     tools {
@@ -39,31 +37,29 @@ pipeline {
                 sh 'npx playwright test --trace on --reporter=html'
             }
         }
-        stage('Upload Report to MEGA and Email Link') {
-      steps {
-        script {
-          // Login to MEGA (make sure 'mega-cmd' is installed on agent)
-          sh """
-            mega-login ${env.MEGA_USER} ${env.MEGA_PASS}
-          """
+       stage('Upload Report to MEGA and Email Link') {
+    steps {
+        withCredentials([usernamePassword(
+            credentialsId: 'mega-credentials',
+            usernameVariable: 'MEGA_USER',
+            passwordVariable: 'MEGA_PASS'
+        )]) {
+            sh """
+                mega-login "$MEGA_USER" "$MEGA_PASS"
+                mega-put playwright-report.zip /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/
+            """
 
-          // Upload the zipped report with unique path per build
-          sh """
-            mega-put playwright-report.zip /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/
-          """
+            // Get public link
+            script {
+                def megaLink = sh(
+                    script: "mega-export /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report.zip",
+                    returnStdout: true
+                ).trim()
+                echo "MEGA report link is: ${megaLink}"
 
-          // Get the publicly shareable public link for the file
-          def megaLink = sh(
-            script: "mega-export /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report.zip",
-            returnStdout: true
-          ).trim()
-
-          echo "MEGA report link is: ${megaLink}"
-
-          // Email the link to your recipients without any attachment
-          emailext(
-            subject: "Playwright Test Report Uploaded to MEGA - Build #${env.BUILD_NUMBER}",
-            body: """Hello,
+                emailext(
+                    subject: "Playwright Test Report Uploaded to MEGA - Build #${env.BUILD_NUMBER}",
+                    body: """Hello,
 
 Your Playwright test report for build #${env.BUILD_NUMBER} has completed successfully and has been uploaded to MEGA.
 
@@ -73,14 +69,14 @@ ${megaLink}
 Best regards,
 Jenkins CI Server
 """,
-            to: 'markoargirovski07@gmail.com',
-            from: 'jenkins@yourdomain.com',
-            replyTo: 'jenkins@yourdomain.com'
-          )
+                    to: 'markoargirovski07@gmail.com',
+                    from: 'jenkins@yourdomain.com',
+                    replyTo: 'jenkins@yourdomain.com'
+                )
+            }
         }
-      }
     }
-  }
+}
 
 //  post {
 //    always {
