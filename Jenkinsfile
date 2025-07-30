@@ -52,7 +52,7 @@ pipeline {
             // Get public link
             script {
                 def megaLink = sh(
-                    script: "mega-export /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report.zip",
+                    script: "mega-export /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report",
                     returnStdout: true
                 ).trim()
                 echo "MEGA report link is: ${megaLink}"
