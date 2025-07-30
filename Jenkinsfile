@@ -44,6 +44,7 @@ pipeline {
             passwordVariable: 'MEGA_PASS'
         )]) {
             sh """
+                mega-logout || true
                 mega-login "$MEGA_USER" "$MEGA_PASS"
                 mega-put playwright-report.zip /JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/
             """
