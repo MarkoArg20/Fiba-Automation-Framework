@@ -76,15 +76,6 @@ Jenkins CI Server
         }
     }
 }
-
-//  post {
-//    always {
- //     script {
-        // Optional: Log out from MEGA to clean session
-  //      sh 'mega-logout || true'
-  //    }
-//    }
-//  }
     }
 
  post {
