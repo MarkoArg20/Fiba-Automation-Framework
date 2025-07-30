@@ -50,7 +50,7 @@ pipeline {
                                 mega-logout || true
                                 mega-login "\$MEGA_USER" "\$MEGA_PASS"
                                 mega-put -c playwright-report "/JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/"
-                                mega-export "/JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report"
+                                mega-export -a "/JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/playwright-report"
                             """,
                             returnStdout: true
                         ).trim()
