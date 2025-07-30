@@ -46,6 +46,7 @@ pipeline {
                     script {
                         def megaLink = sh(
                             script: """
+                            set -x
                                 mega-logout || true
                                 mega-login "\$MEGA_USER" "\$MEGA_PASS"
                                 mega-put -c playwright-report "/JenkinsReports/${env.JOB_NAME}/${env.BUILD_NUMBER}/"
