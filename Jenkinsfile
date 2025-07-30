@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-    MEGA_USER = credentials('markoargirovski07@gmail.com')  // Your Jenkins MEGA username credential ID
+    MEGA_USER = credentials('markoargirovski07@gmail.com')  // Your Jenkins MEGA username credential ID // ova bilo nekoe ID so credentials ( prasaj perplexity) trebalo u config da se dodadat
     MEGA_PASS = credentials('Baterija@11kabel@11')  // Your Jenkins MEGA password credential ID
   }
 
