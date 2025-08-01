@@ -47,17 +47,24 @@ pipeline {
     def safeJobName = env.JOB_NAME.replaceAll(' ', '_')
     def reportFolder = "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}"
 
-    def megaLink = sh(
-        script: """
-            set -e
-            mega-logout || true
-            mega-login "\$MEGA_USER" "\$MEGA_PASS"
-            mega-put -c playwright-report/index.html "${reportFolder}"
-            mega-export -a "${reportFolder}"
-            mega-export | grep "${reportFolder}" | grep 'https://mega.nz' | tail -1
-        """,
-        returnStdout: true
-    ).trim()
+   def megaLink = sh(
+    script: """
+        set -e
+        mega-logout || true
+        mega-login "\$MEGA_USER" "\$MEGA_PASS"
+        mega-put -c playwright-report/index.html "${reportFolder}"
+
+        # Find full path of the uploaded file
+        fullpath=\$(mega-find "${reportFolder}/index.html" | tail -1)
+
+        # Export that specific file
+        mega-export -a "\$fullpath"
+
+        # Extract the link
+        mega-export | grep "\$fullpath" | grep 'https://mega.nz' | tail -1
+    """,
+    returnStdout: true
+).trim()
 
                         echo "MEGA report link is: ${megaLink}"
 
