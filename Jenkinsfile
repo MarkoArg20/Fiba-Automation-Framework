@@ -49,10 +49,16 @@ pipeline {
 
    def megaLink = sh(
     script: """
-    mega-logout || true
-       mega-login "$MEGA_USER" "$MEGA_PASS"
+        mega-logout || true
+        mega-login "$MEGA_USER" "$MEGA_PASS"
         set -e
-        mega-export -a "/First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html" | tail -1
+        # Create the target folder in MEGA if it doesn't exist
+        mega-mkdir -p /First_Pipeline_for_PW/${env.BUILD_NUMBER}
+        # Upload the report file
+        mega-put playwright-report/index.html /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html
+        # Now export and capture URL
+        mega-export -a /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html | tail -1 | awk '{print \$NF}'
+        mega-logout || true
     """,
     returnStdout: true
 ).trim()
