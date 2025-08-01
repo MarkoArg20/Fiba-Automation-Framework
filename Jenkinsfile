@@ -51,8 +51,7 @@ pipeline {
             mega-logout || true
             mega-login "\$MEGA_USER" "\$MEGA_PASS"
             mega-put -c playwright-report/index.html  "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}/"
-            mega-export -a "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}/index.html"
-            mega-export | grep 'https://mega.nz/file/' | tail -1
+            mega-put --export -c playwright-report/index.html "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}/"
         """,
         returnStdout: true
     ).trim()
