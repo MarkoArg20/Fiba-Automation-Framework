@@ -52,7 +52,6 @@ pipeline {
     mega-logout || true
        mega-login "$MEGA_USER" "$MEGA_PASS"
         set -e
-        mega-login "$MEGA_USER" "$MEGA_PASS"
         mega-export -a "/First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html" | tail -1
     """,
     returnStdout: true
