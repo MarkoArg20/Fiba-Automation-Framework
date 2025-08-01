@@ -92,15 +92,15 @@ Jenkins CI Server
         }
 
         always {
-            script {
-                if (isUnix()) {
-                    sh 'zip -r playwright-report.zip playwright-report/index.html playwright-report/data'
-                } else {
-                    bat 'powershell Compress-Archive -Path playwright-report\\index.html,playwright-report\\data -DestinationPath playwright-report.zip'
-                }
-            }
-            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
-            archiveArtifacts artifacts: 'playwright-report.zip', fingerprint: true
+       //     script {
+         //       if (isUnix()) {
+          //          sh 'zip -r playwright-report.zip playwright-report/index.html playwright-report/data'
+          //      } else {
+          //          bat 'powershell Compress-Archive -Path playwright-report\\index.html,playwright-report\\data -DestinationPath playwright-report.zip'
+         //       }
+           // }
+         //   archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+       //     archiveArtifacts artifacts: 'playwright-report.zip', fingerprint: true
 
             script {
                 def reportUrl = "${env.BUILD_URL}artifact/playwright-report/index.html"
