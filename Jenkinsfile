@@ -56,7 +56,7 @@ pipeline {
     """,
     returnStdout: true
 ).trim()
-
+echo "DEBUG: megaLink: >${megaLink}<"
                        
                         echo "MEGA report link is: ${megaLink}"
 
