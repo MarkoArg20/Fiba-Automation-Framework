@@ -47,19 +47,16 @@ pipeline {
     def safeJobName = env.JOB_NAME.replaceAll(' ', '_')
     def reportFolder = "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}"
 
-   def megaDebug = sh(
+   def megaLink = sh(
     script: """
-        set -x
-        mega-logout || true
-        mega-login "\$MEGA_USER" "\$MEGA_PASS"
-        mega-put -c playwright-report/index.html "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}/"
-        echo "Uploaded. Now list contents:"
-        mega-ls -R "/JenkinsReports"
+        set -e
+        mega-login "$MEGA_USER" "$MEGA_PASS"
+        mega-export -a "/First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html" | tail -1
     """,
     returnStdout: true
 ).trim()
 
-echo "MEGA debug output:\n${megaDebug}"
+                       
                         echo "MEGA report link is: ${megaLink}"
 
                         emailext(
