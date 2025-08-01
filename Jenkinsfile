@@ -52,12 +52,14 @@ pipeline {
         mega-logout || true
         mega-login "$MEGA_USER" "$MEGA_PASS"
         set -e
-        # Create the target folder in MEGA if it doesn't exist
         mega-mkdir -p /First_Pipeline_for_PW/${env.BUILD_NUMBER}
-        # Upload the report file
         mega-put playwright-report/index.html /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html
-        # Now export and capture URL
-        mega-export -a /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html | tail -1 | awk '{print \$NF}'
+        sleep 2
+        echo 'Running export...'
+        mega-export -a /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html
+        linkout=\$(mega-export -a /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html | grep -o 'https://mega.nz[^ ]*')
+        echo "LINK: \$linkout"
+        echo \$linkout
         mega-logout || true
     """,
     returnStdout: true
