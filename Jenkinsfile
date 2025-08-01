@@ -43,15 +43,18 @@ pipeline {
                     usernameVariable: 'MEGA_USER',
                     passwordVariable: 'MEGA_PASS'
                 )]) {
-                    script {
+                   script {
     def safeJobName = env.JOB_NAME.replaceAll(' ', '_')
+    def reportFolder = "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}"
+
     def megaLink = sh(
         script: """
-            set -x
+            set -e
             mega-logout || true
             mega-login "\$MEGA_USER" "\$MEGA_PASS"
-            mega-put -c playwright-report/index.html  "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}/"
-            mega-put --export -c playwright-report/index.html "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}/"
+            mega-put -c playwright-report/index.html "${reportFolder}"
+            mega-export -a "${reportFolder}"
+            mega-export | grep "${reportFolder}" | grep 'https://mega.nz' | tail -1
         """,
         returnStdout: true
     ).trim()
