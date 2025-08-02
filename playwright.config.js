@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+require('dotenv').config();
 
 /**
  * Read environment variables from file.
@@ -13,6 +14,26 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  
+  reporter: [
+    [
+      "playwright-mail-reporter",
+      {
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true, // Optional, defaults to true
+        username: "markoargirovski07@gmail.com",
+        password: process.env.GGL_PASSWORD,
+        from: "markoargirovski07@gmail.com",
+        to: "markoargirovski07@gmail.com", // Comma separated list of email addresses
+        subject: "PW TEST RESULTS",
+        linkToResults: 'test',
+        mailOnSuccess: true,
+        showError: true,
+       // apiKey: "<api>",
+      },
+    ],
+  ], 
   timeout: 100000, 
   expect: {
     timeout: 10_0000,
@@ -26,13 +47,6 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: 1,//process.env.CI ? 1 : undefined,
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: //'html',
-    [
-    ['junit', { outputFile: 'test-result/results.xml' }],   // For Jenkins/JUnit
-    ['html', { outputFolder: 'playwright-report', open: 'never' }], // For visual report
-  ],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     screenshot: 'on',
     /* Base URL to use in actions like `await page.goto('/')`. */

@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
   navigationMenu = new NavigationMenu(page)
   await page.goto(process.env.BASE_URL)
   await navigationMenu.preparePageOnLoad()
-  
+
 })
 
 test('Assert if navigation menu is available and all the buttons in it', async ({ page }) => {
