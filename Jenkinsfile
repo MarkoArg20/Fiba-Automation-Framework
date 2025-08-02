@@ -36,7 +36,7 @@ pipeline {
                 sh 'npx playwright test'
             }
         }
-
+    }
        
  //   post {
    //     success {
