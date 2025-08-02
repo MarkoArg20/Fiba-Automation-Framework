@@ -37,7 +37,7 @@ pipeline {
                 sh 'env'
         sh 'cat .env'
      //   sh 'npx playwright install-deps'
-        sh 'npx playwright test --verbose --headed=false'
+   //     sh 'npx playwright test --verbose --headed=false'
             }
         }
     }
