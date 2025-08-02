@@ -32,64 +32,11 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 sh 'npx playwright install'
-                sh 'npx playwright test --reporter=html'
+                sh 'npx playwright test'
             }
         }
 
-        stage('Upload Report to MEGA and Email Link') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'mega-credentials',
-                    usernameVariable: 'MEGA_USER',
-                    passwordVariable: 'MEGA_PASS'
-                )]) {
-                   script {
-    def safeJobName = env.JOB_NAME.replaceAll(' ', '_')
-    def reportFolder = "/JenkinsReports/${safeJobName}/${env.BUILD_NUMBER}"
-
-   def megaLink = sh(
-    script: """
-        mega-logout || true
-        mega-login "$MEGA_USER" "$MEGA_PASS"
-        set -e
-        mega-mkdir -p /First_Pipeline_for_PW/${env.BUILD_NUMBER}
-        mega-put playwright-report/index.html /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html
-        sleep 2
-        echo 'Running export...'
-        mega-export -a /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html
-        linkout=\$(mega-export -a /First_Pipeline_for_PW/${env.BUILD_NUMBER}/index.html | grep -o 'https://mega.nz[^ ]*')
-        echo "LINK: \$linkout"
-        echo \$linkout
-        mega-logout || true
-    """,
-    returnStdout: true
-).trim()
-echo "DEBUG: megaLink: >${megaLink}<"
-                       
-                        echo "MEGA report link is: ${megaLink}"
-
-                        emailext(
-                            subject: "Playwright Test Report Uploaded to MEGA - Build #${env.BUILD_NUMBER}",
-                            body: """Hello,
-
-Your Playwright test report for build #${env.BUILD_NUMBER} has completed successfully and has been uploaded to MEGA.
-
-You can download and view the report here:
-${megaLink}
-
-Best regards,
-Jenkins CI Server
-""",
-                            to: 'markoargirovski07@gmail.com',
-                            from: 'jenkins@yourdomain.com',
-                            replyTo: 'jenkins@yourdomain.com'
-                        )
-                    }
-                }
-            }
-        }
-    } // Close stages
-
+       
     post {
         success {
             emailext(
@@ -100,35 +47,6 @@ Jenkins CI Server
                 replyTo: "markoargirovski07@gmail.com",
                 attachmentsPattern: "playwright-report/data/*.png"
             )
-        }
-
-        always {
-       //     script {
-         //       if (isUnix()) {
-          //          sh 'zip -r playwright-report.zip playwright-report/index.html playwright-report/data'
-          //      } else {
-          //          bat 'powershell Compress-Archive -Path playwright-report\\index.html,playwright-report\\data -DestinationPath playwright-report.zip'
-         //       }
-           // }
-         //   archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
-       //     archiveArtifacts artifacts: 'playwright-report.zip', fingerprint: true
-
-            script {
-                def reportUrl = "${env.BUILD_URL}artifact/playwright-report/index.html"
-                echo "MY_LOCATION_OF_BUILDURL is ${env.BUILD_URL}"
-                emailext(
-                    subject: "Playwright Test Report - HTML",
-                    body: """The Playwright test report is available here:
-
-${reportUrl}
-
-You can view the test report directly by clicking the link above.
-""",
-                    to: "markoargirovski07@gmail.com",
-                    from: "markoargirovski07@gmail.com",
-                    replyTo: "markoargirovski07@gmail.com"
-                )
-            }
         }
     }
 } // Close pipeline
