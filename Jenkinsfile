@@ -34,7 +34,6 @@ pipeline {
             steps {
               sh 'npx playwright install'
                 sh 'env'
-                sh 'fixedEnv'
                 sh 'cat .env'
                 sh 'npx playwright test'
      //   sh 'npx playwright install-deps'
