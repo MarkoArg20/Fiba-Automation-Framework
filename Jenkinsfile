@@ -33,10 +33,10 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
               sh 'npx playwright install'
-           //     sh 'npx playwright test'
                 sh 'env'
                 sh 'fixedEnv'
-        sh 'cat .env'
+                sh 'cat .env'
+                sh 'npx playwright test'
      //   sh 'npx playwright install-deps'
    //     sh 'npx playwright test --verbose --headed=false'
             }
