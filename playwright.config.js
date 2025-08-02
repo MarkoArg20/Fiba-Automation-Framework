@@ -20,23 +20,23 @@ export default defineConfig({
       "html",
       { open: "never" }  // prevents Playwright from opening the report automatically
     ],
-   [
-     "playwright-mail-reporter",
-      {
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true, // Optional, defaults to true
-       username: "markoargirovski07@gmail.com",
-       password: process.env.GGL_PASSWORD,
-       from: "markoargirovski07@gmail.com",
-        to: "markoargirovski07@gmail.com", // Comma separated list of email addresses
-        subject: "PW TEST RESULTS",
-       linkToResults: 'test',
-        mailOnSuccess: true,
-        showError: true,
-        apiKey: "<api>",
-     },
-    ],
+ //  [
+   //  "playwright-mail-reporter",
+   //   {
+    //    host: "smtp.gmail.com",
+ //       port: 465,
+   //     secure: true, // Optional, defaults to true
+   //    username: "markoargirovski07@gmail.com",
+   //    password: process.env.GGL_PASSWORD,
+  //     from: "markoargirovski07@gmail.com",
+   //     to: "markoargirovski07@gmail.com", // Comma separated list of email addresses
+ //       subject: "PW TEST RESULTS",
+  //     linkToResults: 'test',
+    //    mailOnSuccess: true,
+   //     showError: true,
+  //      apiKey: "<api>",
+ //    },
+  //  ],
   ], 
   timeout: 100000, 
   expect: {
