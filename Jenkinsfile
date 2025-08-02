@@ -33,7 +33,7 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
                 sh 'npx playwright install'
-                sh 'npx playwright test'
+                sh 'DEBUG=pw:api npx playwright test'
             }
         }
 
