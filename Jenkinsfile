@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/MarkoArg20/FIBA-.git'
+                git branch: 'main', url: 'https://github.com/MarkoArg20/Fiba-Automation-Framework'
             }
         }
 
@@ -37,18 +37,18 @@ pipeline {
         }
 
        
-    post {
-        success {
-            emailext(
-                subject: "Playwright Test Passed",
-                body: "Test passed. Here are some screenshots.",
-                to: "markoargirovski07@gmail.com",
-                from: "markoargirovski07@gmail.com",
-                replyTo: "markoargirovski07@gmail.com",
-                attachmentsPattern: "playwright-report/data/*.png"
-            )
-        }
-    }
-} // Close pipeline
+ //   post {
+   //     success {
+   //         emailext(
+   //             subject: "Playwright Test Passed",
+   //             body: "Test passed. Here are some screenshots.",
+    //            to: "markoargirovski07@gmail.com",
+    //            from: "markoargirovski07@gmail.com",
+    //            replyTo: "markoargirovski07@gmail.com",
+    //            attachmentsPattern: "playwright-report/data/*.png"
+    //        )
+     //   }
+  //  }
+} 
 
 
