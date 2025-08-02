@@ -52,7 +52,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: 1,//process.env.CI ? 1 : undefined,
   use: {
-    screenshot: 'on',
+    screenshot: 'off',
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
