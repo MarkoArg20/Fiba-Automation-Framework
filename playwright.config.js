@@ -34,7 +34,7 @@ export default defineConfig({
        linkToResults: 'test',
         mailOnSuccess: true,
        showError: true,
-       apiKey: "<api>",
+  //     apiKey: "<api>",
     },
     ],
   ], 
