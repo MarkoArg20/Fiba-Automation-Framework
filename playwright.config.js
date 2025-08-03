@@ -25,7 +25,7 @@ export default defineConfig({
      {
        host: "smtp.gmail.com",
         port: 465,
-        secure: true, // Optional, defaults to true
+        secure: true, 
        username: "markoargirovski07@gmail.com",
        password: process.env.GGL_PASSWORD,
        from: "markoargirovski07@gmail.com",
@@ -34,7 +34,7 @@ export default defineConfig({
        linkToResults: 'test',
         mailOnSuccess: true,
        showError: true,
-  //     apiKey: "<api>",
+  //     apiKey: "",
     },
     ],
   ], 
