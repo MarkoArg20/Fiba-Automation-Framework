@@ -64,11 +64,12 @@ How to configure Jenkins:
 
 The framework runs with 1 worker and only on 1 browser for presenting purposes. But that can be changed in the config file.
 
-## Sample Test Report
-1. Test report
+## Sample Test Reports
+## Test report
+
 ![alt text](sampleScreenshots/Report-detailed.png)
 
-2. Trace report with Screenshot (also PlayWright taks screenshots of the scenario that was run on UI)
+## Trace report with Screenshot (also PlayWright taks screenshots of the scenario that was run on UI)
 
 ![alt text](sampleScreenshots/image-1.png)
 (this is an example of a submitted login with wrong email and correct password, where we expect validationand unathorized access )
