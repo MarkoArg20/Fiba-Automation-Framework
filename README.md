@@ -9,7 +9,7 @@ A Playwright test framework for automating UI and API testing of the [FIBA](http
 ![Coverage](https://img.shields.io/badge/Coverage-UI%20%2B%20Backend-yellow)
 
 
-This is a framework made using PlayWright with JavScript and TypeScript. It covers the navigation menu buttons and some login scenarios. It tests both the UI and the backend for them.
+This is a framework made using Playwright with JavScript and TypeScript. It covers the navigation menu buttons and some login scenarios. It tests both the UI and the backend for them.
 It has a CI pipeline configured in Jenkins and written in Groovy (see Jenkinsfile). Also when the tests are finished it sends a message with a test report.
 
 
@@ -42,6 +42,7 @@ npm ci
 ### Setting up Environment Variables
 Create a `.env` file in the root of the project with the following content:
 
+
 #### Base website URL
 ```bash
 BASE_URL=https://www.fiba.basketball/en
@@ -55,6 +56,7 @@ GET_EVENTS_URL=https://www.fiba.basketball/en/events/api/game-live-info/125389/l
 GET_CALENDAR_URL=https://digital-api.fiba.basketball/hapi/getgdapgamesbetweentwodates?dateFrom=2025-06-01T00:00:00.000Z&dateTo=2025-06-29T00:00:00.000Z
 POST_LOGIN_URL=https://auth.fiba.basketball/identity/v1/password/login
 ```
+- add the .env file in the .gitignore file
 
 #### Credentials (Sign up at https://www.fiba.basketball/en/register)
 
