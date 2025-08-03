@@ -66,14 +66,14 @@ The framework runs with 1 worker and only on 1 browser for presenting purposes. 
 
 ## Sample Test Report
 1. Test report
-![alt text](Report-detailed.png)
+![alt text](sampleScreenshots/Report-detailed.png)
 
 2. Trace report with Screenshot (also PlayWright taks screenshots of the scenario that was run on UI)
 
-![alt text](image-1.png)
+![alt text](sampleScreenshots/image-1.png)
 (this is an example of a submitted login with wrong email and correct password, where we expect validationand unathorized access )
 
 ## Sample Test Report sent on mail
-![Playwright Report](./image.png)
+![Playwright Report](sampleScreenshots/image.png)
 
 
