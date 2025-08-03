@@ -1,4 +1,4 @@
-#FIBA Automation Framework
+### FIBA Automation Framework
 
 A Playwright test framework for automating UI and API testing of the [FIBA](https://www.fiba.basketball) website. Built with JavaScript and TypeScript, integrated with Jenkins for CI/CD and automated reporting.
 
@@ -21,39 +21,58 @@ Navigate to the directory where you want the project:
 - cd path/to/your-folder
 ```
 Create a folder with all the files in it:
+```bash
 - git clone https://github.com/MarkoArg20/Fiba-Automation-Framework
+```
 
 
 # Run the tests:
 Open the project in VS Code or preferred editor
 
 # Install Playwright
+```bash
 npx install playwright
+```
 
 # Install project dependencies
+```bash
 npm ci
+```
 
 # Setting up Environment Variables
 Create a `.env` file in the root of the project with the following content:
 
 # Base website URL
+```bash
 BASE_URL=https://www.fiba.basketball/en
+```
 
 # API endpoints
+```bash
 GET_GAMES_URL=https://www.fiba.basketball/en/games?_rsc=5hm87
 GET_NEWS_URL=https://www.fiba.basketball/en/news?_rsc=1y9sx
 GET_EVENTS_URL=https://www.fiba.basketball/en/events/api/game-live-info/125389/light
 GET_CALENDAR_URL=https://digital-api.fiba.basketball/hapi/getgdapgamesbetweentwodates?dateFrom=2025-06-01T00:00:00.000Z&dateTo=2025-06-29T00:00:00.000Z
 POST_LOGIN_URL=https://auth.fiba.basketball/identity/v1/password/login
+```
 
 # Credentials (Sign up at https://www.fiba.basketball/en/register)
 
-after that, provide the username and password in this variables in the .env
+Provide the username and password in this variables in the .env
+```bash
 FIBA_USERNAME=
 PASSWORD=
+```
 
-- then to run the tests (npx playwright test --headed) 
-- when the tests are finished, to open the report (npx playwright show-report)
+# Run the tests 
+```bash
+npx playwright test --headed
+```
+
+# Open the report
+```bash
+npx playwright show-report
+```
 
 # Jenkins CI Integration
 This project includes a Jenkins pipeline defined in [`Jenkinsfile`](./Jenkinsfile).
@@ -81,7 +100,7 @@ The framework runs with 1 worker and only on 1 browser for presenting purposes. 
 ## Trace report with Screenshot (also PlayWright taks screenshots of the scenario that was run on UI)
 
 ![alt text](sampleScreenshots/image-1.png)
-(this is an example of a submitted login with wrong email and correct password, where we expect validationand unathorized access )
+(this is an example of a submitted login with wrong email and correct password, where we expect validation and unathorized access )
 
 ## Sample Test Report sent on mail
 ![Playwright Report](sampleScreenshots/image.png)
