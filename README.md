@@ -1,9 +1,7 @@
-<img src="assets/fiba_official_logo.svg" alt="FIBA logo" width="120"/>
+#FIBA Automation Framework
 
-<object data="assets/fiba_official_logo.svg" type="image/svg+xml" width="120"/>
+A Playwright test framework for automating UI and API testing of the [FIBA](https://www.fiba.basketball) website. Built with JavaScript and TypeScript, integrated with Jenkins for CI/CD and automated reporting.
 
-
-#Framework for testing the FIBA web app
 
 
 [![Jenkins Build](https://img.shields.io/badge/Jenkins-Build%20Configured-brightgreen?logo=jenkins)](https://github.com/MarkoArg20/Fiba-Automation-Framework/blob/main/Jenkinsfile)
@@ -15,15 +13,22 @@ This is a framework made using PlayWright with JavScript and TypeScript. It cove
 It has a CI pipeline configured in Jenkins and written in Groovy (see Jenkinsfile). Also when the tests are finished it sends a message with a test report.
 
 
-Instalation:
+Installation:
 Clone the repository:
 - cd (to the folder where you want) git init; git remote add origin https://github.com/MarkoArg20/Fiba-Automation-Framework; git pull origin main;
 
 Run the tests: //ova so pogolemi bukvi
-- open the files in Visual studio. Open command prompt and install Plawyright (npx install playwright); then install node.js (npm ci)
-- after that you need to create a .env file in your project for the endpoints, username and password 
+# Open project in VS Code or preferred editor
 
-- How to create the .env file?
+# Install Playwright
+npx install playwright
+
+# Install project dependencies
+npm ci
+
+# Setting up Environment Variables
+Create a `.env` file in the root of the project with the following content:
+
 These are the endpoints that are already set:
 
 BASE_URL=https://www.fiba.basketball/en
@@ -41,9 +46,11 @@ PASSWORD=
 - then to run the tests (npx playwright test --headed) 
 - when the tests are finished, to open the report (npx playwright show-report)
 
-The CI pipeline in jenkins:
-- Tests can be runned through Jenkins and its pipeline implemented in the Jenkinsfile. It can be triggered on different events or a specific time.
-The .env file is passed like a secret in Jenkins. The Jenkins is runned throug a VM.
+# Jenkins CI Integration
+This project includes a Jenkins pipeline defined in [`Jenkinsfile`](./Jenkinsfile).
+
+- Tests can be run through Jenkins and its pipeline implemented in the Jenkinsfile. It can be triggered on different events or a specific time.
+The .env file is passed like a secret in Jenkins. The Jenkins is run throug a VM.
 
 How to configure Jenkins:
 1. Install the GitPush plugin
@@ -56,5 +63,10 @@ How to configure Jenkins:
 
 
 The framework runs with 1 worker and only on 1 browser for presenting purposes. But that can be changed in the config file.
+
+## Sample Test Report
+<img src="./image.png" alt="Playwright Report" width="600"/>
+
+![Playwright Report](./image.png)
 
 
