@@ -1,4 +1,4 @@
-### FIBA Automation Framework
+## FIBA Automation Framework
 
 A Playwright test framework for automating UI and API testing of the [FIBA](https://www.fiba.basketball) website. Built with JavaScript and TypeScript, integrated with Jenkins for CI/CD and automated reporting.
 
@@ -26,28 +26,28 @@ Create a folder with all the files in it:
 ```
 
 
-# Run the tests:
+### Run the tests:
 Open the project in VS Code or preferred editor
 
-# Install Playwright
+### Install Playwright
 ```bash
 npx install playwright
 ```
 
-# Install project dependencies
+### Install project dependencies
 ```bash
 npm ci
 ```
 
-# Setting up Environment Variables
+### Setting up Environment Variables
 Create a `.env` file in the root of the project with the following content:
 
-# Base website URL
+#### Base website URL
 ```bash
 BASE_URL=https://www.fiba.basketball/en
 ```
 
-# API endpoints
+#### API endpoints
 ```bash
 GET_GAMES_URL=https://www.fiba.basketball/en/games?_rsc=5hm87
 GET_NEWS_URL=https://www.fiba.basketball/en/news?_rsc=1y9sx
@@ -56,7 +56,7 @@ GET_CALENDAR_URL=https://digital-api.fiba.basketball/hapi/getgdapgamesbetweentwo
 POST_LOGIN_URL=https://auth.fiba.basketball/identity/v1/password/login
 ```
 
-# Credentials (Sign up at https://www.fiba.basketball/en/register)
+#### Credentials (Sign up at https://www.fiba.basketball/en/register)
 
 Provide the username and password in this variables in the .env
 ```bash
@@ -64,17 +64,17 @@ FIBA_USERNAME=
 PASSWORD=
 ```
 
-# Run the tests 
+### Run the tests 
 ```bash
 npx playwright test --headed
 ```
 
-# Open the report
+### Open the report
 ```bash
 npx playwright show-report
 ```
 
-# Jenkins CI Integration
+### Jenkins CI Integration
 This project includes a Jenkins pipeline defined in [`Jenkinsfile`](./Jenkinsfile).
 
 - Tests can be run through Jenkins and its pipeline implemented in the Jenkinsfile. It can be triggered on different events or a specific time.
@@ -92,17 +92,18 @@ How to configure Jenkins:
 
 The framework runs with 1 worker and only on 1 browser for presenting purposes. But that can be changed in the config file.
 
-## Sample Test Reports
-## Test report
+### Sample Test Reports
+#### Test report 
 
 ![alt text](sampleScreenshots/Report-detailed.png)
 
-## Trace report with Screenshot (also PlayWright taks screenshots of the scenario that was run on UI)
+#### Trace report with Screenshot
+(PW can take screenshots of executed steps on UI)
 
 ![alt text](sampleScreenshots/image-1.png)
 (this is an example of a submitted login with wrong email and correct password, where we expect validation and unathorized access )
 
-## Sample Test Report sent on mail
+#### Test Report sent on mail
 ![Playwright Report](sampleScreenshots/image.png)
 
 
