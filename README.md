@@ -15,10 +15,11 @@ It has a CI pipeline configured in Jenkins and written in Groovy (see Jenkinsfil
 
 #Installation (run the commands in cmd)
 Clone the repository to your local machine:
-```bash
-Navigate to the directory where you want the project:
-- cd path/to/your-folder
 
+Navigate to the directory where you want the project:
+```bash
+- cd path/to/your-folder
+```
 Create a folder with all the files in it:
 - git clone https://github.com/MarkoArg20/Fiba-Automation-Framework
 
