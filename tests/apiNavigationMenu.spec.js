@@ -13,7 +13,7 @@ test.beforeEach(async ({ page, request }) => {
 })
 
 
-test.only('ODREDI IME POSLE', async ({ page, request }) => {
+test('Assert the response of all the endpoint for the buttons in the navigation menu', async ({ page, request }) => {
 
   await navigationMenuApi.assertGamesApiStatusCodeIs200()
   await navigationMenuApi.assertNewsApiStatusCodeIs200()
