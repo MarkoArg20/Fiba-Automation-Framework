@@ -13,12 +13,18 @@ This is a framework made using PlayWright with JavScript and TypeScript. It cove
 It has a CI pipeline configured in Jenkins and written in Groovy (see Jenkinsfile). Also when the tests are finished it sends a message with a test report.
 
 
-Installation:
-Clone the repository:
-- cd (to the folder where you want) git init; git remote add origin https://github.com/MarkoArg20/Fiba-Automation-Framework; git pull origin main;
+#Installation (run the commands in cmd)
+Clone the repository to your local machine:
+```bash
+Navigate to the directory where you want the project:
+- cd path/to/your-folder
 
-Run the tests: //ova so pogolemi bukvi
-# Open project in VS Code or preferred editor
+Create a folder with all the files in it:
+- git clone https://github.com/MarkoArg20/Fiba-Automation-Framework
+
+
+# Run the tests:
+Open the project in VS Code or preferred editor
 
 # Install Playwright
 npx install playwright
@@ -29,16 +35,18 @@ npm ci
 # Setting up Environment Variables
 Create a `.env` file in the root of the project with the following content:
 
-These are the endpoints that are already set:
-
+# Base website URL
 BASE_URL=https://www.fiba.basketball/en
+
+# API endpoints
 GET_GAMES_URL=https://www.fiba.basketball/en/games?_rsc=5hm87
 GET_NEWS_URL=https://www.fiba.basketball/en/news?_rsc=1y9sx
 GET_EVENTS_URL=https://www.fiba.basketball/en/events/api/game-live-info/125389/light
 GET_CALENDAR_URL=https://digital-api.fiba.basketball/hapi/getgdapgamesbetweentwodates?dateFrom=2025-06-01T00:00:00.000Z&dateTo=2025-06-29T00:00:00.000Z
 POST_LOGIN_URL=https://auth.fiba.basketball/identity/v1/password/login
 
-Then signup here https://www.fiba.basketball/en/register
+# Credentials (Sign up at https://www.fiba.basketball/en/register)
+
 after that, provide the username and password in this variables in the .env
 FIBA_USERNAME=
 PASSWORD=
@@ -58,7 +66,7 @@ How to configure Jenkins:
 3. Install Pipeline: GitHub Groovy Libraries
 4. Create a Pipeline project
 5. Set the .env file like a secret (manage Jenkins - credentials - domain (global) - Add Credentials - Paste the context of the .env)
-6. Define the Pipeline (Configuration(of the build) - Pipeline - Choose pipeline script from SCM - in SCM add "Git" - in the repository URL add "https://github.com/MarkoArg20/Fiba-Automation-Framework") and in the branc specifier add */main. In the script path add "Jenkinsfile" - Save and apply
+6. Define the Pipeline (Configuration(of the build) - Pipeline - Choose pipeline script from SCM - in SCM add "Git" - in the repository URL add "https://github.com/MarkoArg20/Fiba-Automation-Framework") and in the branch specifier add */main. In the script path add "Jenkinsfile" - Save and apply
 7. Click on "Build now" to run the pipeline
 
 
