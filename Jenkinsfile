@@ -33,25 +33,10 @@ pipeline {
         stage('Run Playwright Tests') {
             steps {
               sh 'npx playwright install'
-            //    sh 'env'
-            //    sh 'cat .env'
                 sh 'npx playwright test'
             }
         }
     }
-       
- //   post {
-   //     success {
-   //         emailext(
-   //             subject: "Playwright Test Passed",
-   //             body: "Test passed. Here are some screenshots.",
-    //            to: "markoargirovski07@gmail.com",
-    //            from: "markoargirovski07@gmail.com",
-    //            replyTo: "markoargirovski07@gmail.com",
-    //            attachmentsPattern: "playwright-report/data/*.png"
-    //        )
-     //   }
-  //  }
 } 
 
 

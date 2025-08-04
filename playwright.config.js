@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
+import { text } from 'stream/consumers';
 require('dotenv').config();
 
 /**
@@ -30,8 +31,7 @@ export default defineConfig({
        password: process.env.GGL_PASSWORD,
        from: "markoargirovski07@gmail.com",
         to: "markoargirovski07@gmail.com", // Comma separated list of email addresses
-        subject: "PW TEST RESULTS",
-       linkToResults: 'test',
+        subject: "Test report - FIBA Automation Framework",
         mailOnSuccess: true,
        showError: true,
   //     apiKey: "",
