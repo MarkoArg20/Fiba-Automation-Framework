@@ -13,7 +13,7 @@ This is a framework made using Playwright with JavScript and TypeScript. It cove
 It has a CI pipeline configured in Jenkins and written in Groovy (see Jenkinsfile). Also when the tests are finished it sends a message with a test report.
 
 
-#Installation (run the commands in cmd)
+# Installation (run the commands in cmd)
 Clone the repository to your local machine:
 
 Navigate to the directory where you want the project:
